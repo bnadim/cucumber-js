@@ -105,18 +105,6 @@ function getDefinitionLineAndUri(cwd) {
   return { line, uri }
 }
 
-export function addTransform(builder) {
-  return util.deprecate(({ captureGroupRegexps, transformer, typeName }) => {
-    const parameter = new ParameterType(
-      typeName,
-      null,
-      captureGroupRegexps,
-      transformer
-    )
-    builder.options.parameterTypeRegistry.defineParameterType(parameter)
-  }, 'addTransform is deprecated and will be removed in a future version. Please use defineParameterType instead.')
-}
-
 export function defineParameterType(builder) {
   return ({ regexp, transformer, typeName }) => {
     const parameter = new ParameterType(typeName, null, regexp, transformer)
